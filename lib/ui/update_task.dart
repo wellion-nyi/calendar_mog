@@ -47,6 +47,12 @@ class _UpdateTextBarState extends State<UpdateTextBar> {
     setState(() {
       _titleController.text = widget.taskModel.title.toString();
       _noteController.text = widget.taskModel.note.toString();
+      _selectedDate = DateTime.now();
+      _startTime = widget.taskModel.startTime.toString();
+      _endTime = widget.taskModel.endTime.toString();
+      _selectedRemind = widget.taskModel.remind!.toInt();
+      _selectedRepeat = widget.taskModel.repeat.toString();
+      _selectedColor = widget.taskModel.color!.toInt();
     });
   }
 
@@ -127,7 +133,7 @@ class _UpdateTextBarState extends State<UpdateTextBar> {
                 title: "Remind",
                 hint: "$_selectedRemind minutes early",
                 widget: DropdownButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.keyboard_arrow_down,
                     color: Colors.grey,
                   ),
@@ -192,6 +198,7 @@ class _UpdateTextBarState extends State<UpdateTextBar> {
                         label: "Edit Task",
                         onTap: () {
                           _validateController();
+                          _taskController.getTasks();
                         }),
                   ],
                 ),
@@ -285,7 +292,7 @@ class _UpdateTextBarState extends State<UpdateTextBar> {
       backgroundColor: context.theme.colorScheme.background,
       leading: GestureDetector(
           onTap: () {
-            Get.back();
+            Get.to(const HomePage());
           },
           child: Icon(
             Icons.arrow_back_ios,

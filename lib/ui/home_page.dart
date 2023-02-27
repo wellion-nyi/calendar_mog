@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
   _showBottomSheet(BuildContext context, TaskModel taskModel) {
     Get.bottomSheet(Container(
       height: taskModel.isCompleted == 1
-          ? MediaQuery.of(context).size.height * .24
+          ? MediaQuery.of(context).size.height * .16
           : MediaQuery.of(context).size.height * 0.32,
       color: Get.isDarkMode ? darkGreyClr : white,
       child: Column(
@@ -149,15 +149,17 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 20,
           ),
-          _bottomSheetButton(
-              label: "Edit",
-              onTap: () {
-                Get.to(UpdateTextBar(
-                  taskModel: taskModel,
-                ));
-              },
-              isClose: true,
-              clr: Colors.grey),
+          taskModel.isCompleted == 1
+              ? Container()
+              : _bottomSheetButton(
+                  label: "Edit",
+                  onTap: () {
+                    Get.to(UpdateTextBar(
+                      taskModel: taskModel,
+                    ));
+                  },
+                  isClose: true,
+                  clr: Colors.grey),
           const SizedBox(
             height: 10,
           )

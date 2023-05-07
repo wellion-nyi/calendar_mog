@@ -4,7 +4,6 @@ import 'package:clander_mog/services/notification_service.dart';
 import 'package:clander_mog/services/theme_service.dart';
 import 'package:clander_mog/ui/add_task_bar.dart';
 import 'package:clander_mog/ui/theme.dart';
-import 'package:clander_mog/ui/update_task.dart';
 import 'package:clander_mog/ui/widgets/button.dart';
 import 'package:clander_mog/ui/widgets/task_tile.dart';
 import 'package:date_picker_timeline/date_picker_widget.dart';
@@ -115,7 +114,7 @@ class _HomePageState extends State<HomePage> {
     Get.bottomSheet(Container(
       height: taskModel.isCompleted == 1
           ? MediaQuery.of(context).size.height * .16
-          : MediaQuery.of(context).size.height * 0.32,
+          : MediaQuery.of(context).size.height * 0.25,
       color: Get.isDarkMode ? darkGreyClr : white,
       child: Column(
         children: [
@@ -149,17 +148,7 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 20,
           ),
-          taskModel.isCompleted == 1
-              ? Container()
-              : _bottomSheetButton(
-                  label: "Edit",
-                  onTap: () {
-                    Get.to(UpdateTextBar(
-                      taskModel: taskModel,
-                    ));
-                  },
-                  isClose: true,
-                  clr: Colors.grey),
+          
           const SizedBox(
             height: 10,
           )

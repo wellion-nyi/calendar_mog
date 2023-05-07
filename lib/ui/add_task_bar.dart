@@ -21,19 +21,15 @@ class _AddTextBarState extends State<AddTextBar> {
   DateTime _selectedDate = DateTime.now();
   String _endTime = DateFormat("hh:mm a").format(DateTime.now()).toString();
   String _startTime = DateFormat("hh:mm a").format(DateTime.now()).toString();
-  int _selectedRemind = 0;
+  int _selectedRemind = 5;
   List<int> remindList=[
         5,
         10,
-        15,
-        20,
   ];
   String _selectedRepeat = "None";
   List<String> repeatList=[
     "None",
     "Daily",
-    "Weekly",
-    "Monthly",
   ];
   int _selectedColor = 0;
 

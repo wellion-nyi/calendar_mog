@@ -35,13 +35,6 @@ class DBHelper {
     return await _db?.insert(_tableName, taskModel!.toJson()) ?? 1;
   }
 
-  static Future<int> updateData(TaskModel? taskModel) async {
-    // print("insert function called");
-    return await _db?.update(_tableName, taskModel!.toJson(),
-            where: '${taskModel.id}==?', whereArgs: [taskModel.id]) ??
-        1;
-  }
-
   static Future<List<Map<String, dynamic>>> query() async {
     // print("query function called");
     return await _db!.query(_tableName);
